@@ -14,6 +14,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->web(append: [
             \App\Http\Middleware\SecurityHeaders::class,
         ]);
+        // Di belakang proxy (mis. GitHub Codespaces) set TRUSTED_PROXIES=* agar URL & HTTPS terdeteksi benar.
+        $middleware->trustProxies(at: env('TRUSTED_PROXIES'));
         $middleware->alias([
             'role' => \App\Http\Middleware\EnsureRole::class,
             'staff' => \App\Http\Middleware\EnsureStaff::class,

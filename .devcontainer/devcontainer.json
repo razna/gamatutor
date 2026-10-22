@@ -1,0 +1,16 @@
+{
+    "name": "SiKredit",
+    "build": { "dockerfile": "Dockerfile" },
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": { "version": "lts" }
+    },
+    "containerEnv": {
+        "TRUSTED_PROXIES": "*"
+    },
+    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "postAttachCommand": "bash .devcontainer/start.sh",
+    "forwardPorts": [8000],
+    "portsAttributes": {
+        "8000": { "label": "SiKredit", "onAutoForward": "openBrowser" }
+    }
+}

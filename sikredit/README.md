@@ -9,6 +9,13 @@ SQLite/MySQL/PostgreSQL.
 
 ---
 
+## Paling Mudah: GitHub Codespaces (tanpa instalasi)
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/razna/gamatutor?ref=ccr-98d4d74e-cljopw)
+
+Klik tombol di atas, lalu **Create codespace**. Tunggu 5–10 menit; aplikasi disiapkan dan dijalankan otomatis.
+Buka tab **PORTS**, lalu klik ikon 🌐 pada port **8000**.
+
 ## Cara Cepat (Windows, untuk pemula)
 
 1. Pasang **Laravel Herd** (https://herd.laravel.com/windows), yang sudah termasuk PHP & Composer, dan **Node.js LTS** (https://nodejs.org).
