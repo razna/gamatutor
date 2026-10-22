@@ -7,13 +7,13 @@
             <form method="POST" class="card grid h-fit gap-4 p-6 sm:grid-cols-2 lg:col-span-3">
                 @csrf
                 <x-field class="sm:col-span-2" label="Produk kredit" name="product" :options="$products->pluck('name', 'id')" :value="request('product')" required />
-                <x-field label="Usia (tahun)" name="age" type="number" required min="17" />
-                <x-field label="Lama bekerja / usaha (tahun)" name="work_years" type="number" required min="0" />
-                <x-field label="Penghasilan bersih / bulan (Rp)" name="income" type="number" required min="0" />
-                <x-field label="Cicilan berjalan / bulan (Rp)" name="installments" type="number" :value="0" required min="0" />
-                <x-field label="Plafon yang diinginkan (Rp)" name="amount" type="number" required min="1000000" />
-                <x-field label="Jangka waktu (bulan)" name="tenor" type="number" required min="1" />
-                <x-field class="sm:col-span-2" label="Pernah memiliki kredit macet / tunggakan > 90 hari?" name="has_bad_credit" :options="['0' => 'Tidak pernah', '1' => 'Pernah']" required />
+                <x-field label="Usia (tahun)" name="age" type="number" :value="request('age')" required min="17" />
+                <x-field label="Lama bekerja / usaha (tahun)" name="work_years" type="number" :value="request('work_years')" required min="0" />
+                <x-field label="Penghasilan bersih / bulan (Rp)" name="income" type="number" :value="request('income')" required min="0" />
+                <x-field label="Cicilan berjalan / bulan (Rp)" name="installments" type="number" :value="request('installments', 0)" required min="0" />
+                <x-field label="Plafon yang diinginkan (Rp)" name="amount" type="number" :value="request('amount')" required min="1000000" />
+                <x-field label="Jangka waktu (bulan)" name="tenor" type="number" :value="request('tenor')" required min="1" />
+                <x-field class="sm:col-span-2" label="Pernah memiliki kredit macet / tunggakan > 90 hari?" name="has_bad_credit" :value="request('has_bad_credit')" :options="['0' => 'Tidak pernah', '1' => 'Pernah']" required />
                 <div class="sm:col-span-2"><button class="btn-primary w-full">Cek Sekarang</button></div>
             </form>
 

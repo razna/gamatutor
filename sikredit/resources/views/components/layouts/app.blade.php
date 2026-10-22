@@ -37,7 +37,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="min-h-screen bg-slate-100 font-sans text-slate-800 antialiased" x-data="{ sidebar: false }">
-<div class="flex min-h-screen">
+<div class="flex min-h-screen lg:bg-[linear-gradient(to_right,#142356_16rem,transparent_16rem)]">
     <aside :class="sidebar ? 'translate-x-0' : '-translate-x-full'" class="fixed inset-y-0 left-0 z-50 flex w-64 flex-col bg-brand-950 transition-transform lg:sticky lg:top-0 lg:h-screen lg:translate-x-0 no-print">
         <a href="{{ route('home') }}" class="flex items-center gap-2 px-5 py-5">
             <x-logo class="h-9 w-9" />

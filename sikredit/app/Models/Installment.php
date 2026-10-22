@@ -55,7 +55,7 @@ class Installment extends Model
             return ['Direstrukturisasi', 'bg-slate-100 text-slate-500'];
         }
         if ($this->daysOverdue() > 0) {
-            return ['Menunggak '.$this->daysOverdue().' hari', 'bg-rose-100 text-rose-800'];
+            return ['Telat '.$this->daysOverdue().' hari', 'bg-rose-100 text-rose-800'];
         }
 
         return [$this->status === 'partial' ? 'Bayar Sebagian' : 'Belum Bayar', 'bg-slate-100 text-slate-700'];

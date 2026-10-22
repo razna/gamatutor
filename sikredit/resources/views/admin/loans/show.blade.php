@@ -6,10 +6,10 @@
     </x-slot:actions>
     <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <x-stat label="Plafon" :value="rupiah_singkat($loan->approved_amount)" :hint="$loan->finalTenor().' bln · '.$loan->finalRate().'% · cair '.tanggal($loan->disbursed_at)" icon="wallet" />
-        <x-stat label="Outstanding pokok" :value="rupiah_singkat($loan->outstanding_principal)" :hint="rupiah($loan->outstanding_principal)" icon="chart" tone="violet" />
-        <x-stat label="Total tunggakan" :value="rupiah($loan->totalArrears())" :hint="$loan->days_past_due.' hari'" icon="alert" :tone="$loan->days_past_due ? 'rose' : 'green'" />
-        <x-stat label="Kolektibilitas" :value="$kol ? $kol->value.' — '.$kol->label() : '-'" icon="shield" :tone="$kol && $kol->value > 1 ? 'amber' : 'green'" />
-        <x-stat label="Restrukturisasi" :value="$loan->restructure_count.'×'" icon="cog" tone="amber" />
+        <x-stat label="Sisa pokok" :value="rupiah_singkat($loan->outstanding_principal)" :hint="rupiah($loan->outstanding_principal)" icon="chart" tone="violet" />
+        <x-stat label="Tunggakan" :value="rupiah_singkat($loan->totalArrears())" :hint="rupiah($loan->totalArrears()).' · '.$loan->days_past_due.' hari'" icon="alert" :tone="$loan->days_past_due ? 'rose' : 'green'" />
+        <x-stat label="Kolektibilitas" :value="$kol ? 'Kol '.$kol->value : '-'" :hint="$kol?->label()" icon="shield" :tone="$kol && $kol->value > 1 ? 'amber' : 'green'" />
+        <x-stat label="Restruktur" :value="$loan->restructure_count.'×'" icon="cog" tone="amber" />
     </div>
 
     <div class="mt-6 grid items-start gap-6 xl:grid-cols-3" x-data="{ tab: 'jadwal' }">
@@ -21,12 +21,12 @@
             </div>
             <div x-show="tab === 'jadwal'" class="card max-h-[600px] overflow-auto">
                 <table class="table">
-                    <thead class="sticky top-0"><tr><th>Ke</th><th>Jatuh Tempo</th><th class="text-right">Pokok</th><th class="text-right">Bunga</th><th class="text-right">Angsuran</th><th class="text-right">Dibayar</th><th class="text-right">Denda</th><th>Status</th></tr></thead>
+                    <thead class="sticky top-0"><tr><th>Ke</th><th>Jatuh Tempo</th><th class="hidden text-right 2xl:table-cell">Pokok</th><th class="hidden text-right 2xl:table-cell">Bunga</th><th class="text-right">Angsuran</th><th class="text-right">Dibayar</th><th class="text-right">Denda</th><th>Status</th></tr></thead>
                     <tbody class="divide-y divide-slate-100">
                     @foreach ($loan->installments as $i)
                         @php [$l, $c] = $i->statusBadge(); @endphp
                         <tr class="{{ $i->status === 'cancelled' ? 'opacity-50 line-through' : '' }}">
-                            <td>{{ $i->number }}</td><td>{{ tanggal($i->due_date) }}</td><td class="text-right">{{ rupiah($i->principal) }}</td><td class="text-right">{{ rupiah($i->interest) }}</td>
+                            <td>{{ $i->number }}</td><td>{{ tanggal($i->due_date) }}</td><td class="hidden text-right 2xl:table-cell">{{ rupiah($i->principal) }}</td><td class="hidden text-right 2xl:table-cell">{{ rupiah($i->interest) }}</td>
                             <td class="text-right font-semibold">{{ rupiah($i->amount) }}</td><td class="text-right">{{ rupiah($i->paid_amount) }}</td>
                             <td class="text-right {{ $i->remainingPenalty() > 0 ? 'text-rose-600' : '' }}">{{ rupiah($i->penalty) }}</td><td><span class="badge {{ $c }}">{{ $l }}</span></td>
                         </tr>
