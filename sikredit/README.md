@@ -9,6 +9,12 @@ SQLite/MySQL/PostgreSQL.
 
 ---
 
+## Cara Cepat (Windows, untuk pemula)
+
+1. Pasang **Laravel Herd** (https://herd.laravel.com/windows), yang sudah termasuk PHP & Composer, dan **Node.js LTS** (https://nodejs.org).
+2. Klik dua kali **`setup.bat`** di folder `sikredit` (cukup sekali, butuh beberapa menit).
+3. Klik dua kali **`jalankan.bat`**. Browser akan membuka http://127.0.0.1:8000 secara otomatis.
+
 ## Instalasi
 
 ```bash
